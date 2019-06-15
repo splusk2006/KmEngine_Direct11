@@ -5,6 +5,8 @@ using namespace km;
 
 CGraphics::CGraphics()
 {
+	// this is for test
+	int i = 0;
 }
 
 CGraphics::CGraphics(const CGraphics &)
