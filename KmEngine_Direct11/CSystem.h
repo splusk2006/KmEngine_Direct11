@@ -4,7 +4,6 @@
 class CInput;
 class CGraphics;
 
-namespace km{
 class CSystem
 {
 public:
@@ -35,4 +34,3 @@ private:
 
 static LRESULT CALLBACK WndProc(HWND, UINT, WPARAM, LPARAM);
 static CSystem* gpAppHandle = nullptr;
-}

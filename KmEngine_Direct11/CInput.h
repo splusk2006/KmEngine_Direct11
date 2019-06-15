@@ -1,6 +1,5 @@
 #pragma once
 
-namespace km{
 class CInput
 {
 public:
@@ -18,4 +17,3 @@ public:
 private:
 	bool mKeys[256];
 };
-}

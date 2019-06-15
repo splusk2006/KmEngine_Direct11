@@ -1,11 +1,13 @@
 #pragma once
 
-namespace km{
 // GLOBALS
 const bool	FULL_SCREEN		= false;
 const bool	VSYNC_ENABLED	= true;
 const float SCREEN_DEPTH	= 1000.0f;
-const float SCREEN_near		= 0.1f;
+const float SCREEN_NEAR		= 0.1f;
+
+// Forward declarations
+class CDirect3D;
 
 class CGraphics
 {
@@ -20,5 +22,7 @@ public:
 
 private:
 	bool Render();
+
+private:
+	CDirect3D* mpDirect3D = nullptr;
 };
-}

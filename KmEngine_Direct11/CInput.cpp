@@ -1,20 +1,14 @@
 #include "stdafx.h"
 #include "CInput.h"
 
-using namespace km;
-
 CInput::CInput()
-{
-}
+{}
 
 CInput::CInput(const CInput &)
-{
-}
-
+{}
 
 CInput::~CInput()
-{
-}
+{}
 
 void CInput::Initialize()
 {

@@ -8,7 +8,7 @@ int APIENTRY wWinMain
 	_In_	 int		nCmdShow)
 {
 	// Allocate system object
-	km::CSystem* system = new km::CSystem;
+	CSystem* system = new CSystem;
 	if (!system)
 		return -1;
 

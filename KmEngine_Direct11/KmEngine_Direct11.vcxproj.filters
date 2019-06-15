@@ -21,6 +21,12 @@
     <Filter Include="Engine\header">
       <UniqueIdentifier>{1fe3b6c2-9fa1-4325-b68d-d2fb37e53595}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Direct11\cpp">
+      <UniqueIdentifier>{9e4f2746-28b8-4b0d-8a89-07e36ed6cf61}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Direct11\header">
+      <UniqueIdentifier>{5893b833-207e-44c4-b5a1-c7e8216288f7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -38,13 +44,13 @@
     <ClCompile Include="CSystem.cpp">
       <Filter>Engine\cpp</Filter>
     </ClCompile>
+    <ClCompile Include="CDirect3D.cpp">
+      <Filter>Direct11\cpp</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
       <Filter>PCH</Filter>
-    </ClInclude>
-    <ClInclude Include="DxDefine.h">
-      <Filter>Direct11</Filter>
     </ClInclude>
     <ClInclude Include="CGraphics.h">
       <Filter>Engine\header</Filter>
@@ -54,6 +60,15 @@
     </ClInclude>
     <ClInclude Include="CInput.h">
       <Filter>Engine\header</Filter>
+    </ClInclude>
+    <ClInclude Include="DxDefine.h">
+      <Filter>Direct11\header</Filter>
+    </ClInclude>
+    <ClInclude Include="AlignedAllocationPolicy.h">
+      <Filter>Direct11\header</Filter>
+    </ClInclude>
+    <ClInclude Include="CDirect3D.h">
+      <Filter>Direct11\header</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

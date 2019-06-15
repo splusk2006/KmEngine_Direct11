@@ -3,8 +3,6 @@
 #include "CGraphics.h"
 #include "CSystem.h"
 
-using namespace km;
-
 CSystem::CSystem()
 {}
 
@@ -150,16 +148,14 @@ void CSystem::InitializeWindows(int& scr_w, int& scr_h)
 	int monitorW = GetSystemMetrics(SM_CXSCREEN);
 	int monitorH = GetSystemMetrics(SM_CYSCREEN);
 
-	int scrW = scr_w;
-	int scrH = scr_h;
 	int posX = 0;
 	int posY = 0;
 
 	// Set as fullscreen mode
 	if (FULL_SCREEN)
 	{
-		scrW = monitorW;
-		scrH = monitorH;
+		scr_w = monitorW;
+		scr_h = monitorH;
 
 		DEVMODE dmScreenSettings;
 		ZeroMemory(&dmScreenSettings, sizeof(dmScreenSettings));
@@ -167,8 +163,8 @@ void CSystem::InitializeWindows(int& scr_w, int& scr_h)
 		// Screen resolution -> Desktop resolution
 		// Color -> 32bit
 		dmScreenSettings.dmSize			= sizeof(dmScreenSettings);
-		dmScreenSettings.dmPelsWidth	= (ULONG)scrW;
-		dmScreenSettings.dmPelsHeight	= (ULONG)scrH;
+		dmScreenSettings.dmPelsWidth	= (ULONG)scr_w;
+		dmScreenSettings.dmPelsHeight	= (ULONG)scr_h;
 		dmScreenSettings.dmBitsPerPel	= 32;
 		dmScreenSettings.dmFields		= DM_BITSPERPEL | DM_PELSWIDTH | DM_PELSHEIGHT;
 	
@@ -177,19 +173,19 @@ void CSystem::InitializeWindows(int& scr_w, int& scr_h)
 	// Set as window mode
 	else
 	{
-		scrW = 800;
-		scrH = 600;
+		scr_w = 800;
+		scr_h = 600;
 
 		// Place window to mid screen 
-		posX = (monitorW - scrW) / 2;
-		posY = (monitorH - scrH) / 2;
+		posX = (monitorW - scr_w) / 2;
+		posY = (monitorH - scr_h) / 2;
 	}
 
 	// Generate window and get handle
 	mHwnd = CreateWindowEx
 		(WS_EX_APPWINDOW, lpcwAppName, lpcwAppName,
 		WS_CLIPSIBLINGS | WS_CLIPCHILDREN | WS_POPUP,
-		posX, posY, scrW, scrH, NULL, NULL, mHinstance, NULL);
+		posX, posY, scr_w, scr_h, NULL, NULL, mHinstance, NULL);
 
 	// Show window and set focus
 	ShowWindow(mHwnd, SW_SHOW);
@@ -215,7 +211,7 @@ void CSystem::ShutdownWindows()
 	gpAppHandle = NULL;
 }
 
-LRESULT CALLBACK km::WndProc(HWND hwnd, UINT umsg, WPARAM wparam, LPARAM lparam)
+LRESULT CALLBACK WndProc(HWND hwnd, UINT umsg, WPARAM wparam, LPARAM lparam)
 {
 	switch (umsg)
 	{
