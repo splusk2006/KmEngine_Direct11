@@ -1,8 +1,8 @@
 #pragma once
 
 // Forward declarations
-class CInput;
-class CGraphics;
+class km::CInput;
+class km::CGraphics;
 
 namespace km{
 class CSystem
@@ -34,5 +34,5 @@ private:
 };
 
 static LRESULT CALLBACK WndProc(HWND, UINT, WPARAM, LPARAM);
-static CSystem* gpAppHandle = nullptr;
+static CSystem* ApplicationHandle = 0;
 }
