@@ -25,17 +25,17 @@ void CInput::Initialize()
 	}
 }
 
-void CInput::KeyDown(UCHAR _input)
+void CInput::KeyDown(UINT input)
 {
-	mKeys[_input] = true;
+	mKeys[input] = true;
 }
 
-void CInput::KeyUp(UCHAR _input)
+void CInput::KeyUp(UINT input)
 {
-	mKeys[_input] = false;
+	mKeys[input] = false;
 }
 
-bool CInput::IsKeyDown(UCHAR _input)
+bool CInput::IsKeyDown(UINT input)
 {
-	return mKeys[_input];
+	return mKeys[input];
 }

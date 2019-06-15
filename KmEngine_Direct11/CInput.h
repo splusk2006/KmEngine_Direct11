@@ -10,10 +10,10 @@ public:
 
 	void Initialize();
 
-	void KeyDown(UCHAR);
-	void KeyUp(UCHAR);
+	void KeyDown(UINT);
+	void KeyUp(UINT);
 
-	bool IsKeyDown(UCHAR);
+	bool IsKeyDown(UINT);
 
 private:
 	bool mKeys[256];
