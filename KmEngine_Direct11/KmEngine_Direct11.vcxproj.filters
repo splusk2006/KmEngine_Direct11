@@ -7,19 +7,9 @@
     <Filter Include="Direct11">
       <UniqueIdentifier>{e480a0c2-b897-45c7-baef-c958b94c2166}</UniqueIdentifier>
     </Filter>
-    <Filter Include="main">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
-    </Filter>
     <Filter Include="Engine">
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="Engine\cpp">
-      <UniqueIdentifier>{d323af08-abc4-411f-abc8-777fd9e788ce}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\header">
-      <UniqueIdentifier>{1fe3b6c2-9fa1-4325-b68d-d2fb37e53595}</UniqueIdentifier>
     </Filter>
     <Filter Include="Direct11\cpp">
       <UniqueIdentifier>{9e4f2746-28b8-4b0d-8a89-07e36ed6cf61}</UniqueIdentifier>
@@ -27,39 +17,70 @@
     <Filter Include="Direct11\header">
       <UniqueIdentifier>{5893b833-207e-44c4-b5a1-c7e8216288f7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Main">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Engine\Graphics">
+      <UniqueIdentifier>{24e277a6-3512-457a-a340-7066ffd5c7b4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\System">
+      <UniqueIdentifier>{4b7a6d89-229a-4675-97a5-17ace83f0a5f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\System\cpp">
+      <UniqueIdentifier>{d323af08-abc4-411f-abc8-777fd9e788ce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\System\header">
+      <UniqueIdentifier>{1fe3b6c2-9fa1-4325-b68d-d2fb37e53595}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Graphics\cpp">
+      <UniqueIdentifier>{c3644e12-352d-4973-a9a5-b75da086a453}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Graphics\header">
+      <UniqueIdentifier>{c379ae2a-6dd2-4e23-a45e-cf3b2e3d8966}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HLSL">
+      <UniqueIdentifier>{58d44b16-dd6f-4f53-ab0d-b08f4c33f7bd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
       <Filter>PCH</Filter>
     </ClCompile>
     <ClCompile Include="WinMain.cpp">
-      <Filter>main</Filter>
-    </ClCompile>
-    <ClCompile Include="CGraphics.cpp">
-      <Filter>Engine\cpp</Filter>
+      <Filter>Main</Filter>
     </ClCompile>
     <ClCompile Include="CInput.cpp">
-      <Filter>Engine\cpp</Filter>
+      <Filter>Engine\System\cpp</Filter>
     </ClCompile>
     <ClCompile Include="CSystem.cpp">
-      <Filter>Engine\cpp</Filter>
+      <Filter>Engine\System\cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="CGraphics.cpp">
+      <Filter>Engine\Graphics\cpp</Filter>
     </ClCompile>
     <ClCompile Include="CDirect3D.cpp">
       <Filter>Direct11\cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="CColorShader.cpp">
+      <Filter>Engine\Graphics\cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="CCamera.cpp">
+      <Filter>Engine\Graphics\cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="CModel.cpp">
+      <Filter>Engine\Graphics\cpp</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
       <Filter>PCH</Filter>
     </ClInclude>
-    <ClInclude Include="CGraphics.h">
-      <Filter>Engine\header</Filter>
-    </ClInclude>
     <ClInclude Include="CSystem.h">
-      <Filter>Engine\header</Filter>
+      <Filter>Engine\System\header</Filter>
     </ClInclude>
     <ClInclude Include="CInput.h">
-      <Filter>Engine\header</Filter>
+      <Filter>Engine\System\header</Filter>
     </ClInclude>
     <ClInclude Include="DxDefine.h">
       <Filter>Direct11\header</Filter>
@@ -67,8 +88,28 @@
     <ClInclude Include="AlignedAllocationPolicy.h">
       <Filter>Direct11\header</Filter>
     </ClInclude>
+    <ClInclude Include="CGraphics.h">
+      <Filter>Engine\Graphics\header</Filter>
+    </ClInclude>
     <ClInclude Include="CDirect3D.h">
       <Filter>Direct11\header</Filter>
     </ClInclude>
+    <ClInclude Include="CColorShader.h">
+      <Filter>Engine\Graphics\header</Filter>
+    </ClInclude>
+    <ClInclude Include="CCamera.h">
+      <Filter>Engine\Graphics\header</Filter>
+    </ClInclude>
+    <ClInclude Include="CModel.h">
+      <Filter>Engine\Graphics\header</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="Color.vs">
+      <Filter>HLSL</Filter>
+    </FxCompile>
+    <FxCompile Include="Color.ps">
+      <Filter>HLSL</Filter>
+    </FxCompile>
   </ItemGroup>
 </Project>

@@ -8,6 +8,9 @@ const float SCREEN_NEAR		= 0.1f;
 
 // Forward declarations
 class CDirect3D;
+class CCamera;
+class CModel;
+class CColorShader;
 
 class CGraphics
 {
@@ -18,11 +21,14 @@ public:
 
 	bool Initialize(int, int, HWND);
 	void Shutdown();
-	bool Frame();
+	bool GameLoop();
 
 private:
 	bool Render();
 
 private:
-	CDirect3D* mpDirect3D = nullptr;
+	CDirect3D*		mpDirect3D		= nullptr;
+	CCamera*		mpCamera		= nullptr;
+	CModel*			mpModel			= nullptr;
+	CColorShader*	mpColorShader	= nullptr;
 };

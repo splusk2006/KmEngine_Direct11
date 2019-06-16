@@ -294,23 +294,23 @@ bool CDirect3D::Initialize(int scr_w, int scr_h, bool vsync, HWND hwnd, bool ful
 	if (!InitBackBuffer())
 		return false;
 
-/* Depth buffer */
+	// Depth buffer 
 	if (!InitDepthBuffer(scr_w, scr_h))
 		return false;
 
-/* Depth stencil */
+	// Depth stencil
 	if (!InitDepthStencil())
 		return false;
 
-/* Depth stencil view */
+	// Depth stencil view
 	if (!InitDepthStencilView())
 		return false;
 
-/* Rasterizer */
+	// Rasterizer 
 	if (!InitRasterizer())
 		return false;
 
-/* Viewport */
+	// Viewport 
 	D3D11_VIEWPORT viewport;
 	viewport.Width		= (float)scr_w;
 	viewport.Height		= (float)scr_h;
@@ -321,7 +321,7 @@ bool CDirect3D::Initialize(int scr_w, int scr_h, bool vsync, HWND hwnd, bool ful
 
 	mpDC->RSSetViewports(1, &viewport);
 
-/* Matrix */
+	// Matrix
 	float fov = 3.141592654f / 2.0f;
 	float scrAspect = (float)scr_w / (float)scr_h;
 
@@ -337,56 +337,14 @@ void CDirect3D::Shutdown()
 	if (mpSwapChain)
 		mpSwapChain->SetFullscreenState(false, NULL);
 
-	if (mpRasterState)
-	{
-		mpRasterState->Release();
-		mpRasterState = nullptr;
-	}
-
-	if (mpDepthStencilView)
-	{
-		mpDepthStencilView->Release();
-		mpDepthStencilView = nullptr;
-	}
-	if (mpDepthStencilState)
-	{
-		mpDepthStencilState->Release();
-		mpDepthStencilState = nullptr;
-	}
-	if (mpDepthStencilBuff)
-	{
-		mpDepthStencilBuff->Release();
-		mpDepthStencilBuff= nullptr;
-	}
-	if (mpRenderTargetView)
-	{
-		mpRenderTargetView->Release();
-		mpRenderTargetView = nullptr;
-	}
-	if (mpDC)
-	{
-		mpDC->Release();
-		mpDC= nullptr;
-	}
-	if (mpDevice)
-	{
-		mpDevice->Release();
-		mpDevice= nullptr;
-	}
-	if (mpSwapChain)
-	{
-		mpSwapChain->Release();
-		mpSwapChain= nullptr;
-	}
-
-	//ReleaseID3D11Obj<>(mpRasterState);
-	//ReleaseID3D11Obj<>(mpDepthStencilView);
-	//ReleaseID3D11Obj<>(mpDepthStencilState);
-	//ReleaseID3D11Obj<>(mpDepthStencilBuff);
-	//ReleaseID3D11Obj<>(mpRenderTargetView);
-	//ReleaseID3D11Obj<>(mpDC);
-	//ReleaseID3D11Obj<>(mpDevice);
-	//ReleaseID3D11Obj<>(mpSwapChain);
+	ReleaseID3D11Obj<>(mpRasterState);
+	ReleaseID3D11Obj<>(mpDepthStencilView);
+	ReleaseID3D11Obj<>(mpDepthStencilState);
+	ReleaseID3D11Obj<>(mpDepthStencilBuff);
+	ReleaseID3D11Obj<>(mpRenderTargetView);
+	ReleaseID3D11Obj<>(mpDC);
+	ReleaseID3D11Obj<>(mpDevice);
+	ReleaseID3D11Obj<>(mpSwapChain);
 }
 
 void CDirect3D::BeginScene(float r, float g, float b, float a)

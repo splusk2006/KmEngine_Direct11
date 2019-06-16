@@ -31,16 +31,6 @@ private:
 	bool InitDepthStencilView();
 	bool InitRasterizer();
 
-	template<typename T>
-	inline void ReleaseID3D11Obj(T*& obj)
-	{
-		if (obj != nullptr)
-		{
-			obj->Release();
-			obj = nullptr;
-		}
-	}
-
 private:
 	bool		mVsyncEnabled				= false;
 	int			mVideoCardMemory			= 0;

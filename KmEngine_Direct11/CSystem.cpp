@@ -67,19 +67,21 @@ void CSystem::Run()
 	while (true)
 	{
 		// Process window messages
-		if (PeekMessage(&msg, NULL, 0, 0, PM_REMOVE))
+		if (PeekMessage(&msg, NULL, 0, 0, PM_REMOVE))	// 1. Pick messages
 		{
 			// Break this loop if shutdown message is received
 			if (msg.message == WM_QUIT)
 				break;
 
-			TranslateMessage(&msg);
-			DispatchMessage(&msg);
+			// Translate messages to make the program to use keys easily
+			TranslateMessage(&msg);		// 2. Translate messages
+			// Send messages to WndProc
+			DispatchMessage(&msg);		// 3. And send messages to WndProc to process messages.
 		}
 		else
 		{
-			// Process Frame function
-			if (!Frame())
+			// Process Game Loop
+			if (!GameLoop())
 				break;
 		}
 	}
@@ -104,14 +106,14 @@ LRESULT CSystem::MessageHandler(HWND hwnd, UINT umsg, WPARAM wparam, LPARAM lpar
 	return LRESULT();
 }
 
-bool CSystem::Frame()
+bool CSystem::GameLoop()
 {
 	// Always exit with esc
 	if (mpInput->IsKeyDown(VK_ESCAPE))
 		return false;
 
 	// Process graphics frame
-	return mpGraphics->Frame();
+	return mpGraphics->GameLoop();
 }
 
 void CSystem::InitializeWindows(int& scr_w, int& scr_h)
@@ -123,8 +125,7 @@ void CSystem::InitializeWindows(int& scr_w, int& scr_h)
 	mHinstance = GetModuleHandle(NULL);
 
 	// Set name of program
-	mAppName = "KmEngine";
-	LPCWSTR	lpcwAppName = L"KmEngine";//(LPCWSTR)mAppName.c_str();
+	mAppName = L"KmEngine";
 
 	// Set windows class
 	WNDCLASSEX wc;
@@ -138,7 +139,7 @@ void CSystem::InitializeWindows(int& scr_w, int& scr_h)
 	wc.hCursor		 = LoadCursor(NULL,IDC_ARROW);;
 	wc.hbrBackground = (HBRUSH)GetStockObject(BLACK_BRUSH);
 	wc.lpszMenuName	 = NULL;
-	wc.lpszClassName = lpcwAppName;
+	wc.lpszClassName = mAppName;
 	wc.cbSize		 = sizeof(WNDCLASSEX);
 
 	// Register windows class
@@ -183,7 +184,7 @@ void CSystem::InitializeWindows(int& scr_w, int& scr_h)
 
 	// Generate window and get handle
 	mHwnd = CreateWindowEx
-		(WS_EX_APPWINDOW, lpcwAppName, lpcwAppName,
+		(WS_EX_APPWINDOW, mAppName, mAppName,
 		WS_CLIPSIBLINGS | WS_CLIPCHILDREN | WS_POPUP,
 		posX, posY, scr_w, scr_h, NULL, NULL, mHinstance, NULL);
 
@@ -204,7 +205,7 @@ void CSystem::ShutdownWindows()
 	mHwnd = NULL;
 
 	// Unregister program instance
-	UnregisterClass((LPCWSTR)mAppName.c_str(), mHinstance);
+	UnregisterClass(mAppName, mHinstance);
 	mHinstance = NULL;
 
 	// Reset external pointer

@@ -19,12 +19,12 @@ public:
 	LRESULT CALLBACK MessageHandler(HWND, UINT, WPARAM, LPARAM);
 
 private:
-	bool Frame();
+	bool GameLoop();
 	void InitializeWindows(int&, int&);
 	void ShutdownWindows();
 
 private:
-	std::string mAppName;
+	LPCWSTR		mAppName;
 	HINSTANCE	mHinstance;
 	HWND		mHwnd;
 	
